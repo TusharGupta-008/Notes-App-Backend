@@ -32,4 +32,5 @@ const signUp = async (req, res) => {
   }
 };
 
+
 export default signUp;
