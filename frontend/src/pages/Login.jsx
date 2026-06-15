@@ -22,7 +22,8 @@ const Login = () => {
   };
 
   return (
-    <>
+    <div className="container">
+      <h1>Login</h1>
       Email: <input value={email} onChange={(e) => setEmail(e.target.value)} />
       Password:{" "}
       <input
@@ -31,7 +32,7 @@ const Login = () => {
         onChange={(e) => setPassword(e.target.value)}
       />
       <button onClick={handleLogin}>Login</button>
-    </>
+    </div>
   );
 };
 

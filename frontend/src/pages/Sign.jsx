@@ -26,35 +26,19 @@ const Sign = () => {
       console.log(error.response?.data);
     }
   };
+
   return (
-    <>
-      <label>Name</label>{" "}
-      <input
-        type="text"
-        value={name}
-        onChange={(e) => {
-          setName(e.target.value);
-        }}
-      />
-      <label>Email</label>{" "}
-      <input
-        type="text"
-        value={email}
-        onChange={(e) => {
-          setEmail(e.target.value);
-        }}
-      />
-      <label>Password</label>
-      <input
-        type="password"
-        value={password}
-        onChange={(e) => {
-          setPassword(e.target.value);
-        }}
-      />
+    <div className="container">
+      <h1>Signup</h1>
+
+      <input value={name} onChange={(e) => setName(e.target.value)} />
+
+      <input value={email} onChange={(e) => setEmail(e.target.value)} />
+
+      <input value={password} onChange={(e) => setPassword(e.target.value)} />
+
       <button onClick={handleSignup}>Signup</button>
-      <p>{message}</p>
-    </>
+    </div>
   );
 };
 

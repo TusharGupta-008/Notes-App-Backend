@@ -9,7 +9,7 @@ const Dashboard = () => {
     try {
       const token = localStorage.getItem("token");
 
-      const response = await axios.get("http://localhost:4000/api/notes", {
+      const response = await axios.get("http://localhost:4000/api/notes/get", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -27,20 +27,50 @@ const Dashboard = () => {
     fetchNotes();
   }, []);
 
+  const handleDelete = async (id) => {
+    try {
+      const token = localStorage.getItem("token");
+
+      await axios.delete(`http://localhost:4000/api/notes/delete/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      fetchNotes();
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
+
   return (
-    <>
+    <div className="dashboard">
       <h1>Dashboard</h1>
 
-      <button onClick={() => navigate("/create")}>Create Note</button>
-
+      <button className="create-btn" onClick={() => navigate("/create")}>
+        Create Note
+      </button>
+      <button
+        className="logout-btn"
+        onClick={() => {
+          localStorage.removeItem("token");
+          navigate("/login");
+        }}
+      >
+        Logout
+      </button>
       {notes.map((note) => (
-        <div key={note._id}>
+        <div className="note-card" key={note._id}>
           <h2>{note.title}</h2>
+
           <p>{note.description}</p>
-          <hr />
+
+          <button className="delete-btn" onClick={() => handleDelete(note._id)}>
+            Delete
+          </button>
         </div>
       ))}
-    </>
+    </div>
   );
 };
 

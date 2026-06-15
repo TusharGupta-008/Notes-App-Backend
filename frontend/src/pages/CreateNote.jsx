@@ -22,7 +22,7 @@ const CreateNote = () => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       );
 
       console.log(response.data);
@@ -34,7 +34,7 @@ const CreateNote = () => {
   };
 
   return (
-    <>
+    <div className="container">
       <h1>Create Note</h1>
 
       <input
@@ -53,10 +53,8 @@ const CreateNote = () => {
 
       <br />
 
-      <button onClick={handleCreate}>
-        Save Note
-      </button>
-    </>
+      <button onClick={handleCreate}>Save Note</button>
+    </div>
   );
 };
 
