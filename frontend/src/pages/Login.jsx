@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
+import Sign from "./Sign";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -9,10 +10,13 @@ const Login = () => {
   const navigate = useNavigate();
   const handleLogin = async () => {
     try {
-      const response = await axios.post("http://localhost:4000/api/login", {
-        email,
-        password,
-      });
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/login`,
+        {
+          email,
+          password,
+        },
+      );
       console.log(response.data);
       localStorage.setItem("token", response.data.token);
       navigate("/dashboard");
@@ -23,15 +27,27 @@ const Login = () => {
 
   return (
     <div className="container">
-      <h1>Login</h1>
-      Email: <input value={email} onChange={(e) => setEmail(e.target.value)} />
+      <h1>Log In</h1>
+      Email:{" "}
+      <input
+        value={email}
+        placeholder="Enter your email"
+        onChange={(e) => setEmail(e.target.value)}
+      />
       Password:{" "}
       <input
         value={password}
+        placeholder="Enter your password"
         type="password"
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button onClick={handleLogin}>Login</button>
+      <div className="bottom-section">
+        <button onClick={handleLogin}>Login</button>
+        Want to create a new account{" "}
+        <Link style={{ color: "blue", textDecoration: "none" }} to="/sign">
+          Sign In
+        </Link>
+      </div>
     </div>
   );
 };

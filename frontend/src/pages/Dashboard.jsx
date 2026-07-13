@@ -9,17 +9,20 @@ const Dashboard = () => {
     try {
       const token = localStorage.getItem("token");
 
-      const response = await axios.get("http://localhost:4000/api/notes/get", {
-        headers: {
-          Authorization: `Bearer ${token}`,
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_URL}/api/notes/get`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         },
-      });
+      );
 
-      console.log(response.data);
+      console.log(error);
 
       setNotes(response.data.notes);
     } catch (error) {
-      console.log(error.response);
+      console.log(error);
     }
   };
 
@@ -31,7 +34,7 @@ const Dashboard = () => {
     try {
       const token = localStorage.getItem("token");
 
-      await axios.delete(`http://localhost:4000/api/notes/delete/${id}`, {
+      await axios.delete( `${import.meta.env.VITE_API_URL}/api/notes/delete/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -39,7 +42,7 @@ const Dashboard = () => {
 
       fetchNotes();
     } catch (error) {
-      console.log(error.response);
+      console.log(error);
     }
   };
 

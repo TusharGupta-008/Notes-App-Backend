@@ -13,7 +13,7 @@ const CreateNote = () => {
       const token = localStorage.getItem("token");
 
       const response = await axios.post(
-        "http://localhost:4000/api/notes/create",
+        `${import.meta.env.VITE_API_URL}/api/notes/create`,
         {
           title,
           description,
