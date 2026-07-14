@@ -75,7 +75,7 @@ const EditNote = () => {
 
       <br />
 
-      <button onClick={handleCreate}>Update Note</button>
+      <button onClick={handleUpdate}>Update Note</button>
     </div>
   );
 };
