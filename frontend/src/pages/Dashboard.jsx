@@ -23,7 +23,7 @@ const Dashboard = () => {
     } catch (error) {
       console.log(error);
     } finally {
-      setLoading(false); 
+      setLoading(false);
     }
   };
 
@@ -45,7 +45,6 @@ const Dashboard = () => {
       await axios.delete(
         `${import.meta.env.VITE_API_URL}/api/notes/delete/${id}`,
         {
-          
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -99,6 +98,12 @@ const Dashboard = () => {
               }}
             >
               Delete
+            </button>
+            <button
+              className="edit-btn"
+              onClick={() => navigate(`/edit/${note._id}`)}
+            >
+              Edit
             </button>
           </div>
         ))

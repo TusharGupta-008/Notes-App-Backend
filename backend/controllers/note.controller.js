@@ -92,5 +92,59 @@ const deleteNote = async (req, res) => {
     });
   }
 };
+export const getSingleNote = async (req, res) => {
+  try {
+    const note = await Note.findOne({
+      _id: req.params.id,
+      userId: req.user.id,
+    });
+
+    if (!note) {
+      return res.status(404).json({
+        message: "Note not found",
+      });
+    }
+
+    res.status(200).json(note);
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+};
+export const updateNote = async (req, res) => {
+  try {
+    const { title, description } = req.body;
+
+    const note = await Note.findOneAndUpdate(
+      {
+        _id: req.params.id,
+        userId: req.user.id,
+      },
+      {
+        title,
+        description,
+      },
+      {
+        new: true,
+      },
+    );
+
+    if (!note) {
+      return res.status(404).json({
+        message: "Note not found",
+      });
+    }
+
+    res.status(200).json({
+      message: "Note Updated",
+      note,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+};
 
 export { createNote, getNotes, singleNote, deleteNote };
