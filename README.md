@@ -18,17 +18,13 @@ https://github.com/TusharGupta-008/NoteFlow
 
 ## 📸 Screenshots
 
-### Dashboard
-![Dashboard](screenshots/dashboard.png)
+| Dashboard | Create Note |
+|-----------|-------------|
+| ![](screenshots/dashboard.png) | ![](screenshots/create-note.png) |
 
-### Create Note
-![Create Note](screenshots/create-note.png)
-
-### Edit Note
-![Edit Note](screenshots/edit-note.png)
-
-### Signin
-![Login](screenshots/signin.png)
+| Edit Note | Signin |
+|-----------|-------|
+| ![](screenshots/edit-note.png) | ![](screenshots/signin.png) |
 
 ---
 
